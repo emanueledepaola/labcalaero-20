@@ -1,0 +1,255 @@
+close all
+for i=1:10
+filename       = ['1' num2str(0.2*i) '-2.5.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 21;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(:,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[-1;airfoil_analysis(:,1);1];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(:,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_main_y_neg(i)=sum(b(:))/S;
+end
+
+
+for i=1:10
+filename       = ['1' num2str(i*0.2) '-2.5.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 93;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(1:68,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[airfoil_analysis(1,1)-0.005;airfoil_analysis(1:68,1);airfoil_analysis(68,1)+0.005];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(1:68,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_second_y_neg(i)=sum(b(:))/S;
+end
+
+
+
+
+
+for i=1:10
+filename       = ['1' num2str(0.2*i) '5.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 21;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(:,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[-1;airfoil_analysis(:,1);1];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(:,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_main_y_pos(i)=sum(b(:))/S;
+end
+
+for i=1:10
+filename       = ['1' num2str(0.2*i) '5.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 93;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(1:68,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[airfoil_analysis(1,1)-0.005;airfoil_analysis(1:68,1);airfoil_analysis(68,1)+0.005];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(1:68,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_second_y_pos(i)=sum(b(:))/S;
+end
+
+
+
+
+
+
+for i=1:4
+filename       = [num2str(i) '1-2.5.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 21;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(:,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[-1;airfoil_analysis(:,1);1];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(:,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_main_x_neg(i)=sum(b(:))/S;
+end
+
+
+for i=1:4
+filename       = [num2str(i) '1-2.5.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 93;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(1:68,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[airfoil_analysis(1,1)-0.005;airfoil_analysis(1:68,1);airfoil_analysis(68,1)+0.005];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(1:68,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_second_x_neg(i)=sum(b(:))/S;
+end
+
+
+
+
+
+for i=1:4
+filename       = [num2str(i) '15.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 21;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(:,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[-1;airfoil_analysis(:,1);1];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(:,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_main_x_pos(i)=sum(b(:))/S;
+end
+
+for i=1:4
+filename       = [num2str(i) '15.txt'];
+delimiterIn    = ' ';
+headerlinesIn  = 93;
+format long;
+
+analysis_struct = importdata(filename,delimiterIn,headerlinesIn);
+
+fields = fieldnames(analysis_struct);
+analysis  = char(fields(1));
+
+airfoil_analysis = analysis_struct.(analysis);
+cd_i=[0;airfoil_analysis(1:68,6);0];
+cd_medio=0.5*(cd_i(1:end-1)+cd_i(2:end));
+y_span=[airfoil_analysis(1,1)-0.005;airfoil_analysis(1:68,1);airfoil_analysis(68,1)+0.005];
+dy=diff(y_span(:));
+S=0.332;
+corda=[0.110;airfoil_analysis(1:68,2);0.110];
+corda_m=0.5*(corda(1:end-1)+corda(2:end));
+a=corda_m.*cd_medio;
+b=a.*dy;
+CDi_second_x_pos(i)=sum(b(:))/S;
+end
+
+figure(1)
+subplot(1,2,1)
+hold on
+plot(CDi_main_x_neg)
+plot(CDi_main_x_pos)
+axis([1 4 0 0.01])
+title('CDi Ala anteriore');xlabel('distanza su x, (y=1m)');
+legend('alfa=-2.5','alfa=5')
+subplot(1,2,2)
+hold on
+plot(CDi_second_x_neg)
+plot(CDi_second_x_pos)
+title('CDi Ala posteriore');xlabel('distanza su x, (y=1m)');
+legend('alfa=-2.5','alfa=5')
+axis([1 4 0 0.01])
+x=(0.2:0.2:2);
+figure(2)
+subplot(1,2,1)
+hold on
+plot(x,CDi_main_y_neg)
+plot(x,CDi_main_y_pos)
+title('CDi Ala anteriore');xlabel('distanza su y, (x=1m)');
+legend('alfa=-2.5','alfa=5')
+axis([0.2 2 -0.004 0.01])
+subplot(1,2,2)
+hold on
+plot(x,CDi_second_y_neg)
+plot(x,CDi_second_y_pos)
+title('CDi Ala posteriore');xlabel('distanza su y, (x=1m)');
+legend('alfa=-2.5','alfa=5')
+axis([0.2 2 0 0.01])
+y=(x-1)/2;
+figure(3)
+subplot(1,2,1)
+hold on
+plot(y,CDi_main_y_neg/0.0014)
+plot(y,CDi_main_y_pos/0.0055)
+title('CDi/CDi0 Ala anteriore');xlabel('distanza tra tip/apertura alare, (x=1m)');
+legend('alfa=-2.5','alfa=5')
+axis([-0.5 0.5 -0.5 1])
+subplot(1,2,2)
+hold on
+plot(y,CDi_second_y_neg/0.0014)
+plot(y,CDi_second_y_pos/0.0055)
+title('CDi/CDi0 Ala posteriore');xlabel('distanza tra tip/apertura alare, (x=1m)');
+legend('alfa=-2.5','alfa=5')
+axis([-0.4 0.5 0.7 1])
